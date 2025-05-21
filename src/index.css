@@ -1,1 +1,225 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Estilos generales */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+h3 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Estilos para el HeaderComponent */
+.navbar {
+  background-color: #2c3e50 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  color: #ecf0f1 !important;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: #ecf0f1 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+  padding: 5px 10px;
+}
+
+.nav-link:hover {
+  color: #3498db !important;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: #3498db !important;
+  border-bottom: 2px solid #3498db;
+}
+
+.navbar-toggler {
+  border-color: #ecf0f1 !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(236, 240, 241, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.text-end {
+  color: #ecf0f1;
+  font-size: 14px;
+}
+
+.text-end .nav-link {
+  color: #3498db !important;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background-color: rgba(52, 152, 219, 0.1);
+  transition: all 0.3s ease;
+}
+
+.text-end .nav-link:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Estilos para SerieComponent */
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+  height: 170px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card .btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.btn-secondary {
+  background-color: #7f8c8d;
+  border-color: #7f8c8d;
+}
+
+.btn-secondary:hover {
+  background-color: #6c7a89;
+  border-color: #6c7a89;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+/* Estilos para CategoryPage */
+.table {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #3498db;
+  color: white;
+}
+
+.table thead th {
+  border-bottom: none;
+  font-weight: 500;
+  padding: 12px;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+/* Estilos para LoginPage */
+.card.shadow-lg.p-5 {
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.form-control, .form-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Estilos para SerieFormPage */
+.form-control, .form-select {
+  margin-bottom: 10px;
+}
+
+/* Estilos para SeriePage */
+.border-bottom {
+  border-bottom-color: #e6e6e6 !important;
+}
+
+/* Estilo para los botones de las acciones en la tabla */
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+
+/* Estilo para el botón Nuevo en SeriePage */
+.btn-primary.mb-3 {
+  padding: 8px 16px;
+}

@@ -18,17 +18,17 @@ function HeaderComponent() {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/home">Inicio</NavLink>
+              <NavLink className={({isActive}) => isActive ? "nav-link active" : "nav-link"} to="/home">Inicio</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/categories">Categorías</NavLink>
+              <NavLink className={({isActive}) => isActive ? "nav-link active" : "nav-link"} to="/categories">Categorías</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/series">Series</NavLink>
+              <NavLink className={({isActive}) => isActive ? "nav-link active" : "nav-link"} to="/series">Series</NavLink>
             </li>
           </ul>
           <div className="text-end">
-            Bienvenido Jhon Due<br/>
+            <span>Bienvenido Jhon Due</span><br/>
             <NavLink to="/">Salir</NavLink>
           </div>
         </div>
