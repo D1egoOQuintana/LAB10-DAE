@@ -1,10 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 
+
+const initData = {
+  
+  cod: '',
+  nom: '',
+  cat: '',
+
+}
 function SerieFormPage() {
   const navigate = useNavigate();
-  const { cod } = useParams();           // Código de serie si se está editando
+  const { cod } = useParams();
+  const [data, setData] = useState(initData);           
   const query = new URLSearchParams(useLocation().search);
 
   const series = [
