@@ -6,7 +6,7 @@ function SerieComponent({ codigo, nombre, categoria, imagen }) {
     <div className="card">
       <img 
         className="card-img-top" 
-        src={imagen} 
+        src={`https://dummyimage.com/400x250/000/fff&text=${imagen}`} 
         alt={nombre} />
       <div className="card-body">
         <h5 className="card-title">{nombre}</h5>

@@ -13,7 +13,6 @@ const initData = {
 function SerieFormPage() {
   const navigate = useNavigate();
   const { cod } = useParams();           // Código de serie si se está editando
-  const [data, setData] = useState(initData);
   const query = new URLSearchParams(useLocation().search);
 
   const series = [
@@ -25,10 +24,54 @@ function SerieFormPage() {
     {cod:6, nom:"The X-Files", cat:"Drama", img:"the-x-files.png"},
   ];
 
-  const [nombre, setNombre] = React.useState("");
-  const [categoria, setCategoria] = React.useState("");
-  const [imagen, setImagen] = React.useState("");
 
+  const [nombre, setNombre] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [imagen, setImagen] = useState("");
+
+  // Manejar cambio de nombre
+  const onChangeNombre = (e) => {
+    setNombre(e.target.value);
+  };
+
+  // Manejar cambio de categoría
+  const onChangeCategoria = (e) => {
+    setCategoria(e.target.value);
+  };
+
+  // Manejar cambio de imagen (file input)
+  const onChangeImagen = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        setImagen(ev.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí puedes enviar los datos (nombre, categoria, imagen)
+    console.log("Enviando:", { nombre, categoria, imagen });
+  };
+  const setDataFrom = (cod) => {
+  for (let item of series) {
+    if (item.cod == cod) {
+        console.log(item);
+        const nData = {
+          cod: item.cod,
+          nom: item.nom,
+          cat: item.cat,
+          img: ''
+        };
+        setData(nData);
+        document.getElementById("fileImg").src = `https://dummyimage.com/400x250/000/fff&text=${nData.img}`;
+        break;
+      }
+    }
+  };
   // Cargar datos si es edición (cod existe)
   useEffect(() => {
     if (cod) {
@@ -36,21 +79,16 @@ function SerieFormPage() {
       if (item) {
         setNombre(item.nom);
         setCategoria(item.cat);
-        setImagen(item.img);
+        setImagen(item.img.startsWith('http') ? item.img : "");
       }
     } else {
-      // Si no es edición, puede tomar valores del query string si quieres
       setNombre(query.get("nombre") || "");
       setCategoria(query.get("cat") || "");
-      setImagen(""); // Por defecto no hay imagen
+      setImagen("");
     }
-  }, [cod, query]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    // Aquí iría llamado a API o state update
-    navigate("/series");
-  };
+    // eslint-disable-next-line
+  }, [cod]);
+  
 
   return (
     <>
@@ -62,7 +100,7 @@ function SerieFormPage() {
             <img 
               id="fileImg" 
               className="card-img-top mb-3" 
-              src={`https://dummyimage.com/400x250/000/fff&text=${imagen ? imagen : ""}`} 
+              src={imagen ? imagen : "https://dummyimage.com/400x250/000/fff&text=Sin+Imagen"} 
               alt="preview"/>
           </div>
           <div className="col-md-8">
@@ -73,16 +111,16 @@ function SerieFormPage() {
                 type="text" 
                 className="form-control" 
                 value={nombre} 
-                onChange={e => setNombre(e.target.value)} 
+                onChange={onChangeNombre}
                 required />
             </div>
             <div className="mb-3">
               <label htmlFor="inputCategory" className="form-label">Categoría</label>
-              <select 
+              <select onChange={onChangeCategoria}
                 id="inputCategory" 
                 className="form-select" 
                 value={categoria} 
-                onChange={e => setCategoria(e.target.value)} 
+              
                 required>
                 <option value="">Seleccione...</option>
                 {["Horror","Comedy","Action","Drama"].map(cat => (
@@ -96,8 +134,9 @@ function SerieFormPage() {
                 id="inputImage" 
                 type="file" 
                 className="form-control" 
-                // Aquí puedes agregar lógica para manejar la carga y vista previa de la imagen
-                />
+                accept="image/*"
+                onChange={onChangeImagen}
+              />
             </div>
             <div className="d-flex">
               <button type="submit" className="btn btn-primary me-2">Guardar</button>
