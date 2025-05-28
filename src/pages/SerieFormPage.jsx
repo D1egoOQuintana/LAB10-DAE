@@ -12,8 +12,7 @@ const initData = {
 }
 function SerieFormPage() {
   const navigate = useNavigate();
-  const { cod } = useParams();
-  const [data, setData] = useState(initData);           
+  const { cod } = useParams();           // Código de serie si se está editando
   const query = new URLSearchParams(useLocation().search);
 
   const series = [
