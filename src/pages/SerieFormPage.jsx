@@ -4,7 +4,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 function SerieFormPage() {
   const navigate = useNavigate();
-  const { cod } = useParams();           // Código de serie si se está editando
+  const { cod } = useParams();// Código de serie si se está editando
   const query = new URLSearchParams(useLocation().search);
 
   const series = [
